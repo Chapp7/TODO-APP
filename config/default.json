@@ -1,3 +1,4 @@
 {
-    "mongoURI":"mongodb+srv://charan:charanvirat77@todo.ktgx7.mongodb.net/TODO?retryWrites=true&w=majority"
+    "mongoURI":"mongodb+srv://charan:charanvirat77@todo.ktgx7.mongodb.net/TODO?retryWrites=true&w=majority",
+    "jwtSecret":"charan"
 }
