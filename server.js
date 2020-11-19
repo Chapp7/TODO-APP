@@ -11,5 +11,6 @@ connectDB();
 
 app.use('/user',require('./routes/user'));
 app.use('/auth',require('./routes/auth'));
+app.use('/todo',require('./routes/todo'));
 
 app.listen(PORT,()=>console.log(`Server started at port ${PORT}`));

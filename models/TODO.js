@@ -11,6 +11,10 @@ const TodoSchema = new mongoose.Schema({
         datecreated : {
             type : Date,
             default : Date.now
+        },
+        deadline : {
+            type : Date,
+            default : Date.now
         }
     } 
     ],
