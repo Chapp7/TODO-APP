@@ -7,4 +7,4 @@ const mainReducers = combineReducers({
   task:taskReducer,  
 });
 
-export default mainReducers
+export default mainReducers;

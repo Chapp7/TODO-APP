@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createStore} from 'redux'
-import mainReducer from './store/reducers/mainReducers'
+import mainReducer from './store/reducers/mainReducer'
 import {Provider} from 'react-redux'
 
 const store = createStore(mainReducer);
