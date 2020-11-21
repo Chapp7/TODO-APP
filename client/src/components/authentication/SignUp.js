@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {register} from '../../actions/auth';
+//import PropTypes from 'prop-types';
+
+
 
 
 class SignUp extends Component {
@@ -18,14 +21,20 @@ class SignUp extends Component {
     this.setState({...this.state,
       [e.target.id]:e.target.value
     })
-    console.log(this.state);
   }
   handleSubmit = (e) =>{
     e.preventDefault();
-    console.log('hii');
     this.props.register(this.state);
   }
+
   render() {
+    if(this.props.isAuthenticated){
+      return (
+        <div>
+         hello from our TODO APP!
+        </div>
+      );
+    }
     return (
       <div className = "container">
         <form className="white" onSubmit={this.handleSubmit}>
@@ -61,5 +70,14 @@ class SignUp extends Component {
     )
   }
 }
-
-export default connect(null,{register})(SignUp);
+/*
+SignUp.propTypes = {
+  isAuthenticated: PropTypes.bool
+};
+*/
+const mapStatetoProps = (state)=>{
+  return {
+    isAuthenticated : state.auth.isAuthenticated
+  }
+}
+export default connect(mapStatetoProps,{register})(SignUp);

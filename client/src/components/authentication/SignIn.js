@@ -1,19 +1,33 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {login} from '../../actions/auth';
+import { connect } from 'react-redux';
 
 class SignIn extends Component {
-  state = {
-    email:'',
-    password:''
+  constructor(props){
+    super(props);
+    this.state = {
+      email:'',
+      password:''
+    }
   }
+
   handleChange = (e) =>{
     this.setState({
       [e.target.id]:e.target.value
     })
   }
   handleSubmit = (e) =>{
-    e.preventdefault();
+    e.preventDefault();
+    this.props.login(this.state);
   }
   render() {
+    if(this.props.isAuthenticated){
+      return (
+        <div>
+         hello from our TODO APP!
+        </div>
+      );
+    }
     return (
       <div className = "container">
         <form className="white" onSubmit={this.handleSubmit}>
@@ -38,4 +52,9 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn
+const mapStatetoProps = (state)=>{
+  return {
+    isAuthenticated : state.auth.isAuthenticated
+  }
+}
+export default connect(mapStatetoProps,{login})(SignIn);

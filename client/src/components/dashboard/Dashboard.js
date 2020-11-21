@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Notifications from './Notifications' 
 import TaskList from '../tasks/TaskList'
 import {connect} from 'react-redux'
+import { Link, Redirect } from 'react-router-dom';
 
 
 class Dashboard extends Component{
