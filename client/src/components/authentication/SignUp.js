@@ -1,20 +1,29 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {register} from '../../actions/auth';
+
 
 class SignUp extends Component {
-  state = {
-    email:'',
-    password:'',
-    firstName:'',
-    lastName:''
+  constructor(props) {
+    super(props)
+    this.state = {
+      email:'',
+      password:'',
+      firstName:'',
+      lastName:''
+    }
   }
+  
   handleChange = (e) =>{
-    this.setState({
+    this.setState({...this.state,
       [e.target.id]:e.target.value
     })
+    console.log(this.state);
   }
   handleSubmit = (e) =>{
-    e.preventdefault();
-    console.log(this.state);
+    e.preventDefault();
+    console.log('hii');
+    this.props.register(this.state);
   }
   render() {
     return (
@@ -44,7 +53,7 @@ class SignUp extends Component {
           </div>
 
           <div className="input-field">
-            <button className="btn red lighten-1 z-depth-0">Login</button>
+            <button className="btn red lighten-1 z-depth-0">Register</button>
           </div>
           
         </form>
@@ -53,4 +62,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp
+export default connect(null,{register})(SignUp);
